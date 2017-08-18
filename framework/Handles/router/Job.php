@@ -77,5 +77,21 @@ class Job
         // 获取返回值
         $this->app->responseData = $job->$actionName();
     }
-    
+
+    /**
+     * 普通路由　url路径
+     *
+     * @param void
+     */
+    public function general()
+    {
+        $app            = $this->app;
+        $request        = $app::$container->getSingle('request');
+        $moduleName     = $request->request('module');
+        $jobName        = $request->request('job');
+        $actionName     = $request->request('action');
+        $this->moduleName = $moduleName;
+        $this->jobName    = $jobName;
+        $this->actionName = $actionName;
+    }
 }
